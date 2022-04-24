@@ -54,5 +54,5 @@ def test_dq_channel_to_seglist2():
 	
     segment_list = rl.dq_channel_to_seglist(chan_dict[DQflag])
 	
-    assert len(segment_list) == 10
+    assert len(segment_list) == 1
     
