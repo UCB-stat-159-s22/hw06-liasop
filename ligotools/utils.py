@@ -48,7 +48,7 @@ def reqshift(data,fshift=100,sample_rate=4096):
     return z
 
 
-def plot_PSD(time, timemax, SNR, pcolor, det, tevent, strain_whitenbp, template_match, eventname, plottype, template_fft, datafreq, d_eff, template_f, freqs, data_psd, fs, template_f):
+def plot_PSD(time, timemax, SNR, pcolor, det, tevent, strain_whitenbp, template_match, eventname, plottype, template_fft, datafreq, d_eff, freqs, data_psd, fs):
 	plt.figure(figsize=(10,8))
 	plt.subplot(2,1,1)
 	plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')
