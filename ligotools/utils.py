@@ -1,3 +1,19 @@
+# Standard python numerical analysis imports:
+import numpy as np
+from scipy import signal
+from scipy.interpolate import interp1d
+from scipy.signal import butter, filtfilt, iirdesign, zpk2tf, freqz
+import h5py
+import json
+
+# the IPython magic below must be commented out in the .py file, since it doesn't work there.
+import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
+
+# LIGO-specific readligo.py 
+from ligotools import readligo as rl
+
+
 # function to whiten data
 def whiten(strain, interp_psd, dt):
     Nt = len(strain)
