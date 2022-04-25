@@ -22,6 +22,8 @@ def whiten(strain, interp_psd, dt):
     Nt = len(strain)
     freqs = np.fft.rfftfreq(Nt, dt)
     freqs1 = np.linspace(0,2048.,Nt/2+1)
+    # TEST 1
+    assert Nt != 0
 
     # whitening: transform to freq domain, divide by asd, then transform back, 
     # taking care to get normalization right.
@@ -33,6 +35,8 @@ def whiten(strain, interp_psd, dt):
 
 # function to keep the data within integer limits, and write to wavfile:
 def write_wavfile(filename,fs,data):
+    #TEST 2
+    assert data != None
     d = np.int16(data/np.max(np.abs(data)) * 32767 * 0.9)
     wavfile.write(filename,int(fs), d)
     
@@ -41,6 +45,9 @@ def reqshift(data,fshift=100,sample_rate=4096):
     """Frequency shift the signal by constant
     """
     x = np.fft.rfft(data)
+    #TEST 3
+    assert x != None
+
     T = len(data)/float(sample_rate)
     df = 1.0/T
     nbins = int(fshift/df)
@@ -52,6 +59,10 @@ def reqshift(data,fshift=100,sample_rate=4096):
 
 
 def plot_PSD(time, timemax, SNR, pcolor, det, tevent, strain_whitenbp, template_match, eventname, plottype, template_fft, datafreq, d_eff, freqs, data_psd, fs):
+
+	 #TEST 4
+	assert pcolor != None
+	
 	plt.figure(figsize=(10,8))
 	plt.subplot(2,1,1)
 	plt.plot(time-timemax, SNR, pcolor,label=det+' SNR(t)')
@@ -72,7 +83,7 @@ def plot_PSD(time, timemax, SNR, pcolor, det, tevent, strain_whitenbp, template_
 	plt.grid('on')
 	plt.xlabel('Time since {0:.4f}'.format(timemax))
 	plt.legend(loc='upper left')
-	plt.savefig(eventname+"_"+det+"_SNR."+plottype)
+	plt.savefig('figures/' + eventname+"_"+det+"_SNR."+plottype)
 
 	plt.figure(figsize=(10,8))
 	plt.subplot(2,1,1)
@@ -95,7 +106,7 @@ def plot_PSD(time, timemax, SNR, pcolor, det, tevent, strain_whitenbp, template_
 	plt.ylabel('whitened strain (units of noise stdev)')
 	plt.legend(loc='upper left')
 	plt.title(det+' Residual whitened data after subtracting template around event')
-	plt.savefig(eventname+"_"+det+"_matchtime."+plottype)
+	plt.savefig('figures/' + eventname+"_"+det+"_matchtime."+plottype)
 
 	# -- Display PSD and template
 	# must multiply by sqrt(f) to plot template fft on top of ASD:
@@ -110,4 +121,4 @@ def plot_PSD(time, timemax, SNR, pcolor, det, tevent, strain_whitenbp, template_
 	plt.ylabel('strain noise ASD (strain/rtHz), template h(f)*rt(f)')
 	plt.legend(loc='upper left')
 	plt.title(det+' ASD and template around event')
-	plt.savefig(eventname+"_"+det+"_matchfreq."+plottype)
+	plt.savefig('figures/' + eventname+"_"+det+"_matchfreq."+plottype)
