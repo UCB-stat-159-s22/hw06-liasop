@@ -633,7 +633,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the event properties from a local json file</span>
-<span class="n">fnjson</span> <span class="o">=</span> <span class="s2">&quot;BBH_events_v3.json&quot;</span>
+<span class="n">fnjson</span> <span class="o">=</span> <span class="s2">&quot;data/BBH_events_v3.json&quot;</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="n">events</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="n">fnjson</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">IOError</span><span class="p">:</span>
@@ -687,8 +687,8 @@
 <span class="c1">#----------------------------------------------------------------</span>
 <span class="k">try</span><span class="p">:</span>
     <span class="c1"># read in data from H1 and L1, if available:</span>
-    <span class="n">strain_H1</span><span class="p">,</span> <span class="n">time_H1</span><span class="p">,</span> <span class="n">chan_dict_H1</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">loaddata</span><span class="p">(</span><span class="n">fn_H1</span><span class="p">,</span> <span class="s1">&#39;H1&#39;</span><span class="p">)</span>
-    <span class="n">strain_L1</span><span class="p">,</span> <span class="n">time_L1</span><span class="p">,</span> <span class="n">chan_dict_L1</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">loaddata</span><span class="p">(</span><span class="n">fn_L1</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">)</span>
+    <span class="n">strain_H1</span><span class="p">,</span> <span class="n">time_H1</span><span class="p">,</span> <span class="n">chan_dict_H1</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">loaddata</span><span class="p">(</span><span class="s1">&#39;data/&#39;</span> <span class="o">+</span> <span class="n">fn_H1</span><span class="p">,</span> <span class="s1">&#39;H1&#39;</span><span class="p">)</span>
+    <span class="n">strain_L1</span><span class="p">,</span> <span class="n">time_L1</span><span class="p">,</span> <span class="n">chan_dict_L1</span> <span class="o">=</span> <span class="n">rl</span><span class="o">.</span><span class="n">loaddata</span><span class="p">(</span><span class="s1">&#39;data/&#39;</span> <span class="o">+</span> <span class="n">fn_L1</span><span class="p">,</span> <span class="s1">&#39;L1&#39;</span><span class="p">)</span>
 <span class="k">except</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cannot find data files!&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You can download them from https://losc.ligo.org/s/events/&quot;</span><span class="o">+</span><span class="n">eventname</span><span class="p">)</span>
@@ -814,7 +814,7 @@ For the moment, let’s ignore that, and assume it’s all noise.</p>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Freq (Hz)&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper center&#39;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Advanced LIGO strain data near &#39;</span><span class="o">+</span><span class="n">eventname</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">eventname</span><span class="o">+</span><span class="s1">&#39;_ASDs.&#39;</span><span class="o">+</span><span class="n">plottype</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;figures/&#39;</span> <span class="o">+</span> <span class="n">eventname</span><span class="o">+</span><span class="s1">&#39;_ASDs.&#39;</span><span class="o">+</span><span class="n">plottype</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
