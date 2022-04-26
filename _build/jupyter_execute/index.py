@@ -126,7 +126,7 @@ from ligotools.utils import *
 
 
 # Read the event properties from a local json file
-fnjson = "BBH_events_v3.json"
+fnjson = "data/BBH_events_v3.json"
 try:
     events = json.load(open(fnjson,"r"))
 except IOError:
@@ -170,8 +170,8 @@ print(event)
 #----------------------------------------------------------------
 try:
     # read in data from H1 and L1, if available:
-    strain_H1, time_H1, chan_dict_H1 = rl.loaddata(fn_H1, 'H1')
-    strain_L1, time_L1, chan_dict_L1 = rl.loaddata(fn_L1, 'L1')
+    strain_H1, time_H1, chan_dict_H1 = rl.loaddata('data/' + fn_H1, 'H1')
+    strain_L1, time_L1, chan_dict_L1 = rl.loaddata('data/' + fn_L1, 'L1')
 except:
     print("Cannot find data files!")
     print("You can download them from https://losc.ligo.org/s/events/"+eventname)
@@ -280,7 +280,7 @@ if make_plots:
     plt.xlabel('Freq (Hz)')
     plt.legend(loc='upper center')
     plt.title('Advanced LIGO strain data near '+eventname)
-    plt.savefig(eventname+'_ASDs.'+plottype)
+    plt.savefig('figures/' + eventname+'_ASDs.'+plottype)
 
 
 # NOTE that we only plot the data between f_min = 20 Hz and f_max = 2000 Hz.
